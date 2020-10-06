@@ -10,3 +10,17 @@
 // `description` | a longer description of the product
 // `category` | the category this product belongs to, limit to one
 // `price` | the price the user will pay
+
+// board games
+import { boardGames } from '../data.js';
+import { render } from '../utils.js';
+
+const ul = document.querySelector('#list');
+
+for (let i = 0; i < boardGames.length; i++) {
+    const game = boardGames[i];
+
+    const li = render(game);
+
+    ul.appendChild(li);    
+}

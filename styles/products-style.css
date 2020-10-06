@@ -1,0 +1,15 @@
+.product {
+    width: 400px;
+    padding: 20px;
+    border: solid 3px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.product > img {
+    width: 300px;
+}
+
+.product > p {
+    margin: 0;
+}
