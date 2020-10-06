@@ -1,7 +1,7 @@
 export const boardGames = [
     {
         id: 'arkham',
-        title: 'Arkham Horror 3rd Edition',
+        title: 'Arkham Horror',
         publisher: 'Chaosium',
         cover: 'arkham.png',
         price: 64.99,
