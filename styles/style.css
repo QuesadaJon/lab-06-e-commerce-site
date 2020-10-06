@@ -49,6 +49,7 @@ section {
     margin-top: var(--gutter);
     margin-bottom: var(--gutter);
     border: solid 2px var(--color1);
+
 }
 
 header {
@@ -68,7 +69,7 @@ footer {
 
 
 h2 {
-    font-size: 1.8rem;
+    font-size: 3rem;
     font-weight: bold;
 }
 
@@ -122,4 +123,7 @@ footer {
         transform: rotate3d(10, 10, 10, 50deg) scale(1);
     }
 
+  }
+  .banner {
+    font-family: 'Poppins', sans-serif;
   }

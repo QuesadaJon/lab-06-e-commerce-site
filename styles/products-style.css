@@ -1,6 +1,6 @@
 .main-section{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 .product {
     width: 400px;
@@ -18,4 +18,9 @@
 
 .product > p {
     margin: 0;
+}
+
+.list {
+    display:flex;
+    flex-flow: row;
 }
