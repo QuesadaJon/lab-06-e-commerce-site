@@ -1,6 +1,6 @@
 // IMPORT MODULES under test here:
 // import { example } from '../example.js';
-import { render, findById } from '../utils.js';
+import { render, findById, calcLineItem } from '../utils.js';
 
 
 const test = QUnit.test;
@@ -112,20 +112,25 @@ test('Function should be able to take an array and an id and return the array', 
 });
 
 
-test('Function should take in my game data and return an li with the appropreate contents', (expect) => {
+test('Function should take in an ammount and a quantitiy and returns the total', (expect) => {
     //Arrange
     // Set up your arguments and expectations
-    const cartItem = {
+    const line1 = 4;
+    const line2 = 29.99;
+    const expected = 119.96;
+
+    const line1a = 27;
+    const line2a = 29.99;
+    const expecteda = 809.73;
         
-    };
-    
-    const expected = '<tr><td>Arkham Horror</td><td>$64.99</td><td>3</td><td>$194.97</td></tr><tr><td>Betrayal at House on the Hill</td><td>$29.99</td><td>2</td><td>$59.98</td></tr>';
     
     //Act 
     // Call the function you're testing and set the result to a const
-    const actual = render(game);
+    const actual = calcLineItem(line1, line2);
+    const actuala = calcLineItem(line1a, line2a);
 
     //Expect
     // Make assertions about what is expected versus the actual result
-    expect.equal(actual.outerHTML, expected);
+    expect.equal(expected, actual);
+    expect.equal(expecteda, actuala);
 });
