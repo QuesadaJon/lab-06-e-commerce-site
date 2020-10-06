@@ -26,3 +26,27 @@ test('Function should take in my game data and return an li with the appropreate
     // Make assertions about what is expected versus the actual result
     expect.equal(actual.outerHTML, expected);
 });
+
+test('Function should take in my game data and return an li with the appropreate contents', (expect) => {
+    //Arrange
+    // Set up your arguments and expectations
+    const game = {
+        id: 'arkham',
+        title: 'Arkham Horror',
+        publisher: 'Chaosium',
+        cover: 'arkham.png',
+        price: 64.99,
+        description: 'Arkham Horror: The Card Game is a cooperative Living Card Game® set amid a backdrop of Lovecraftian horror. As the Ancient Ones seek entry to our world, one to two investigators (or up to four with two Core Sets) work to unravel arcane mysteries and conspiracies.',
+        expansions: true,        
+    };
+    
+    const expected = '<tr><td>Arkham Horror</td><td>$64.99</td><td>3</td><td>$194.97</td></tr><tr><td>Betrayal at House on the Hill</td><td>$29.99</td><td>2</td><td>$59.98</td></tr>';
+    
+    //Act 
+    // Call the function you're testing and set the result to a const
+    const actual = render(game);
+
+    //Expect
+    // Make assertions about what is expected versus the actual result
+    expect.equal(actual.outerHTML, expected);
+});

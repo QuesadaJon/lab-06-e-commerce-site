@@ -4,16 +4,18 @@
 }
 .product {
     width: 400px;
-    padding: 20px;
+    padding: 10px;
     border: solid 3px;
     text-align: center;
-    border-radius: 15px;
+    border-radius: 10px;
     background: gray;
+    margin: 10px;
     
 }
 
 .product > img {
     width: 300px;
+    margin: 20px;
 }
 
 .product > p {

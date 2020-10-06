@@ -32,7 +32,7 @@ export const boardGames = [
         publisher: 'Cephalofai Games',
         cover: 'gloomhaven.png',
         price: 99.99,
-        description: 'Gloomhaven is a tactical skirmish adventure game. ... You work together to clear out dungeons and ruins. As you gain experience, you develop abilities, gain loot, and uncover facets of the world in this expanding and branching setting.',
+        description: 'Gloomhaven is a tactical skirmish adventure game. You work together to clear out dungeons and ruins. As you gain experience, you develop abilities, gain loot, and uncover facets of the world in this expanding and branching setting.',
         expansions: true,        
     },
     {
