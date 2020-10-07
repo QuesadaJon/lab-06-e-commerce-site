@@ -1,5 +1,5 @@
 import { boardGames } from '../data.js';
-import { findById, calcLineItem, calcOrderItem } from '../utils.js';
+import { findById, calcLineItem } from '../utils.js';
 
 // 1. Import your data (both cart and products), DOM generation function, and any needed utility functions
 // 2. locate the `tbody` element where your line items will go
@@ -22,7 +22,6 @@ export function renderTableRow(cartItem) {
     const tdPrice = document.createElement('td');
     const tdQuantity = document.createElement('td');
     const tdTotal = document.createElement('td');
-    const tdOrderTotal = document.createElement('td');
 
     tdQuantity.textContent = cartItem.quantity;
 
@@ -37,9 +36,8 @@ export function renderTableRow(cartItem) {
     const total = calcLineItem(price, cartItem.quantity);
 
     tdTotal.textContent = `$${total}`;
-    
-    const orderTotal = calcOrderItem(total);
 
-    tr.append(tdTitle, tdPrice, tdQuantity, tdTotal, tdOrderTotal, orderTotal);
+    tr.append(tdTitle, tdPrice, tdQuantity, tdTotal);
+    
     return tr;
 }
