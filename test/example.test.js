@@ -1,6 +1,6 @@
 // IMPORT MODULES under test here:
 // import { example } from '../example.js';
-import { render, findById, calcLineItem } from '../utils.js';
+import { render, findById, calcLineItem, calcOrderItem } from '../utils.js';
 import { renderTableRow } from '../cart/cart-utils.js';
 
 
@@ -62,6 +62,25 @@ const gameArray = [
     boss,
     gloomhaven,
     rokugan
+];
+
+const arkhamCheckout = {
+    id: 'arkham',
+    quantity: 4
+};
+const betrayalCheckout = {
+    id: 'betrayal',
+    quantity: 2
+};
+const bossCheckout = {
+    id: 'boss',
+    quantity: 1,
+};
+
+const checkoutArray = [
+    arkhamCheckout,
+    betrayalCheckout,
+    bossCheckout
 ];
 
 
@@ -153,4 +172,20 @@ test('should take in a cartItem and return a tr element with the appropriate con
     //Expect
     // Make assertions about what is expected versus the actual result
     expect.equal(actual.outerHTML, expected);
+});
+
+test('should take in a cartArray and return the subtotal of items in cart', (expect) => {
+    const cartArray = checkoutArray;
+
+    //Arrange
+    // Set up your arguments and expectations
+    const expected = '$341.93';
+    
+    //Act 
+    // Call the function you're testing and set the result to a const
+    const actual = calcOrderItem(cartArray);
+
+    //Expect
+    // Make assertions about what is expected versus the actual result
+    expect.equal(actual, expected);
 });

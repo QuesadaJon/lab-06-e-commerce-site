@@ -1,3 +1,4 @@
+import { boardGames, cart } from '../data.js';
 // export const boardGames = [
 //     {
 //         id: 'arkham',
@@ -67,4 +68,27 @@ export function calcLineItem(quantity, ammount) {
     const result = lineOne * lineTwo;
     return Math.round(result * 100) / 100;
     
+}
+// ## Step 5: TDD CalcOrderTotal
+
+// TDD for a function that lives in `/utils.js` called `calcOrderItem`. This function takes the cart array and products array. Calculate the total of your cart data as the expected value.
+
+// In the function:
+// 1. Create a variable to hold the order total. 
+// 1. Loop the line items and use the `calcLineItem` function to calculate each line item and add it to the order total. 
+// 1. Return the order total
+// 1. Note: you may need to round the order total to 
+// get your test to pass like you did with the line item total
+
+export function calcOrderItem(cartArray) {
+    let accumulator = 0;
+
+    for (let i = 0; i < cartArray.length; i++) {
+        const item = cartArray[i];
+
+        const itemActual = findById(boardGames, item.id);
+        const subtotal = itemActual.price * item.quantity;
+        accumulator = accumulator + subtotal;
+    }
+    return `$${accumulator}`;
 }

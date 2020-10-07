@@ -4,6 +4,7 @@
 // 1. Import your data (both cart and products), DOM generation function, and any needed utility functions
 import { boardGames, cart } from '../data.js';
 import { findById } from '..utils.js';
+import { renderTableRow } from '../cart-utils.js';
 // 2. locate the `tbody` element where your line items will go
 // 3. loop through your data
 //     1. Create a variable based on the current array index.
@@ -13,7 +14,9 @@ import { findById } from '..utils.js';
 const table = document.querySelector('tbody');
 
 for (let i = 0; i < cart.length; i++) {
-    const game = cart[i]; {
+    const game = cart[i]; 
 
-    
+    const tr = renderTableRow(game);
+
+    table.appendChild(tr);       
 }
