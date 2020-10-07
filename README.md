@@ -226,9 +226,7 @@ In a new JavaScript file, `/data/cart.js`:
 
 TDD for a function that lives in `/utils.js` called `findById`. This function takes an array and an id, and returns the first item found that has an `.id` property that matches the passed in id. It can return `null` if no match is found.
 
-### Step 4: TDD `calcLineItem` Function
-
-TDD for a function that lives in `/utils.js` called `calcLineItem`. This function takes quantity and an amount and returns the total. Due to how JavaScript uses floating point numbers, you may need to round the result to two decimal places using: `Math.round(amount * 100) / 100`
+z
 
 ### Step 5: TDD DOM Render Function
 
