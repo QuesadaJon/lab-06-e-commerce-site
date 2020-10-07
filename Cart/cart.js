@@ -1,6 +1,7 @@
 import { cart } from '../data.js';
 import { calcOrderItem } from '..utils.js';
 import { renderTableRow } from '../cart-utils.js';
+console.log('hello world');
 
 
 const table = document.querySelector('tbody');
