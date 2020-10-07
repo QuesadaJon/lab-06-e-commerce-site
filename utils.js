@@ -1,4 +1,4 @@
-import { boardGames, cart } from '../data.js';
+import { boardGames } from '../data.js';
 // export const boardGames = [
 //     {
 //         id: 'arkham',

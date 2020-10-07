@@ -205,7 +205,7 @@ Property | Description
 
 The goal for today is to generate a table with the quantity, product name, and line item total, plus an overall order total for all products in the cart.
 
-### Step 1: Design Cart
+<!-- ### Step 1: Design Cart
 
 Work out the static design for the cart table. It should show the quantity, product name and line item total on each row. The footer should have the order total.
 
@@ -252,7 +252,7 @@ In your `/shopping-cart/shopping-cart.js`, you will need to:
     1. Pass these to your DOM generation function and capture result in variable
     1. Append to the table body (`tbody`)
 
-**git add, commit, push!**
+**git add, commit, push!** -->
 
 ### Step 5: TDD CalcOrderTotal
 
