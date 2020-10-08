@@ -16,11 +16,21 @@
 .product > img {
     width: 300px;
     margin: 20px;
+    column-fill: auto;
 }
 
 .product > p {
     margin: 0;
+    font-size: 1em;
 }
+p:first-of-type {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+p:nth-child(2) {
+    margin-bottom: 60px;
+}
+
 
 .list {
     display:flex;
