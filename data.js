@@ -48,14 +48,14 @@ export const boardGames = [
 
 export const cart = [{
     id: 'arkham',
-    price: 64.99
+    quantity: 5
 }, {
     id: 'betrayal',
-    price:29.99
+    quantity: 2
 }, {
     id: 'boss',
-    price: 21.99
+    quantity: 17
 }, {
     id: 'gloomhaven',
-    price: 99.99
+    quantity: 9
 }];

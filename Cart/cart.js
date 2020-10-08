@@ -1,21 +1,24 @@
-import { cart } from '../data.js';
-import { calcOrderItem } from '..utils.js';
-import { renderTableRow } from '../cart-utils.js';
-console.log('hello world');
+// import { cart } from '../data.js';
+import { calcOrderItem, getFromLocalStorage } from '../utils.js';
+import { renderTableRow } from './cart-utils.js';
 
 
 const table = document.querySelector('tbody');
+const totalCell = document.querySelector('tfoot');
+const checkoutButton = document.querySelector('button');
+
+const cart = getFromLocalStorage('CART') || [];
 
 for (let i = 0; i < cart.length; i++) {
     const game = cart[i]; 
-
     const tr = renderTableRow(game);
-
-    table.appendChild(tr);       
+    table.appendChild(tr);
 }
 
-const total = calcOrderItem(cart);
+const grandTotal = calcOrderItem(cart);
+totalCell.textContent = grandTotal;
 
-const totalGrid = document.querySelector('.total');
-
-totalGrid.textContent = `total: $${total}`;
+checkoutButton.addEventListener('click', () => {
+    const stringyCart = JSON.stringify(cart, true, 2);
+    alert(stringyCart);
+});

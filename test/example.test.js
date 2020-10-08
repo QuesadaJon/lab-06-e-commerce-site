@@ -189,3 +189,4 @@ test('should take in a cartArray and return the subtotal of items in cart', (exp
     // Make assertions about what is expected versus the actual result
     expect.equal(actual, expected);
 });
+

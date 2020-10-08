@@ -1,15 +1,4 @@
 import { boardGames } from '../data.js';
-// export const boardGames = [
-//     {
-//         id: 'arkham',
-//         title: 'Arkham Horror 3rd Edition',
-//         publisher: 'Chaosium',
-//         cover: 'arkham.png',
-//         price: 64.99,
-//         description: 'Arkham Horror: The Card Game is a cooperative Living Card Game® set amid a backdrop of Lovecraftian horror. As the Ancient Ones seek entry to our world, one to two investigators (or up to four with two Core Sets) work to unravel arcane mysteries and conspiracies.',
-//         expansions: true,        
-//     }
-
 
 export function render(boardGames) {
     const li = document.createElement('li');
@@ -18,6 +7,7 @@ export function render(boardGames) {
     const description = document.createElement('p');
     const price = document.createElement('p');
     const cover = document.createElement('img');
+    const button = document.createElement('button');
  
     li.classList.add('product');
 
@@ -46,6 +36,29 @@ export function render(boardGames) {
 
     li.appendChild(description);
 
+    button.textContent = 'Add to Cart';
+    li.appendChild(button);
+
+    button.addEventListener('click', () => {
+
+        const cart = getFromLocalStorage('CART') || [];
+
+        const cartItems = findById(cart, boardGames.id);
+
+        if (cartItems === undefined) {
+            const newItem = {
+                id: boardGames.id,
+                quantity:1
+            };
+
+            cart.push(newItem);
+        } else {
+            cartItems.quantity++;
+        }
+
+        setInLocalStorage('CART', cart);
+    });
+
    
     return li;
 }
@@ -59,9 +72,6 @@ export function findById(array, id) {
     }
 }
 
-// ### Step 4: TDD `calcLineItem` Function
-
-// TDD for a function that lives in `/utils.js` called `calcLineItem`. This function takes quantity and an amount and returns the total. Due to how JavaScript uses floating point numbers, you may need to round the result to two decimal places using: `Math.round(amount * 100) / 100`
 export function calcLineItem(quantity, ammount) {
     const lineOne = quantity;
     const lineTwo = ammount;
@@ -69,16 +79,6 @@ export function calcLineItem(quantity, ammount) {
     return Math.round(result * 100) / 100;
     
 }
-// ## Step 5: TDD CalcOrderTotal
-
-// TDD for a function that lives in `/utils.js` called `calcOrderItem`. This function takes the cart array and products array. Calculate the total of your cart data as the expected value.
-
-// In the function:
-// 1. Create a variable to hold the order total. 
-// 1. Loop the line items and use the `calcLineItem` function to calculate each line item and add it to the order total. 
-// 1. Return the order total
-// 1. Note: you may need to round the order total to 
-// get your test to pass like you did with the line item total
 
 export function calcOrderItem(cartArray) {
     let accumulator = 0;
@@ -90,5 +90,19 @@ export function calcOrderItem(cartArray) {
         const subtotal = itemActual.price * item.quantity;
         accumulator = accumulator + subtotal;
     }
-    return `$${accumulator}`;
+    return `$${Math.round(accumulator * 100) / 100}`;
+}
+
+export function getFromLocalStorage(key) {
+    const item = localStorage.getItem(key);
+    
+    return JSON.parse(item);
+}
+
+export function setInLocalStorage(key, value) {
+    const stringyItem = JSON.stringify(value);
+
+    localStorage.setItem(key, stringyItem);
+
+    return value;
 }
