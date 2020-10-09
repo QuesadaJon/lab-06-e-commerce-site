@@ -1,5 +1,6 @@
 import { boardGames } from '../data.js';
 
+
 export function render(boardGames) {
     const li = document.createElement('li');
     const title = document.createElement('p');
@@ -105,4 +106,41 @@ export function setInLocalStorage(key, value) {
     localStorage.setItem(key, stringyItem);
 
     return value;
+}
+export function getLocalStorageGames(key, value) {
+
+    // go get localStorageBooks from local storage and call them localStorageBooks
+    let localStorageBooks = JSON.parse(localStorage.getItem(key));
+
+    // if there are no localStorageBooks in local storage yet
+    // if they've never been to the site
+    if (!localStorageBooks) {
+        // go grab the hard coded localStorageBooks, and SEED local storage with them
+        const stringyBooks = JSON.stringify(value);
+
+        localStorage.setItem(key, stringyBooks);
+        localStorageBooks = value;
+    }
+
+    return localStorageBooks;
+}
+
+export function addProduct(key, value) {
+
+    const localStorageBooks = getLocalStorageGames(key, value);
+
+    localStorageBooks.push(value);
+
+    const stringyLocalBooks = JSON.stringify(localStorageBooks);
+    localStorage.setItem(key, stringyLocalBooks);
+
+    // It takes a product object as a parameter and puts the product into the correct place in localStorage.
+    // Your test should add a product, then retrieve all the products and assert deep Equal the last item
+    // in the array and the supplied new product.
+    
+    // Your function will need to:
+    
+    // 1. Retrieve the existing products array
+    // 1. Push the new product into the array
+    // 1. Re-save the products array into localStorage
 }
