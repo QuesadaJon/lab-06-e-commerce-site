@@ -1,4 +1,5 @@
-import { boardGames } from '../data.js';
+import { boardGames as hardCodedGames } from '../data.js';
+import { PRODUCT, CART} from './constants.js';
 
 
 export function render(boardGames) {
@@ -42,7 +43,7 @@ export function render(boardGames) {
 
     button.addEventListener('click', () => {
 
-        const cart = getFromLocalStorage('CART') || [];
+        const cart = getFromLocalStorage(CART) || [];
 
         const cartItems = findById(cart, boardGames.id);
 
@@ -57,7 +58,7 @@ export function render(boardGames) {
             cartItems.quantity++;
         }
 
-        setInLocalStorage('CART', cart);
+        setInLocalStorage(CART, cart);
     });
 
    
@@ -85,7 +86,7 @@ export function calcOrderItem(cartArray) {
     for (let i = 0; i < cartArray.length; i++) {
         const item = cartArray[i];
 
-        const itemActual = findById(boardGames, item.id);
+        const itemActual = findById(hardCodedGames, item.id);
         const subtotal = itemActual.price * item.quantity;
         accumulator = accumulator + subtotal;
     }
@@ -114,27 +115,26 @@ export function getLocalStorageGames(key) {
     // if they've never been to the site
     if (!localStorageBooks) {
         // go grab the hard coded localStorageBooks, and SEED local storage with them
-        const stringyBooks = JSON.stringify(boardGames);
+        const stringyBooks = JSON.stringify(hardCodedGames);
 
         localStorage.setItem(key, stringyBooks);
-        localStorageBooks = boardGames;
+        localStorageBooks = hardCodedGames;
     }
 
     return localStorageBooks;
 }
 
-export function addProduct(newProduct, key) {
+export function addProduct(newProduct) {
 
-    const games = localStorage.getItem(key);
+    const games = localStorage.getItem('GAMES');
 
     const parsedGames = JSON.parse(games);
-
     
     parsedGames.push(newProduct);
 
     const stringyNewProducts = JSON.stringify(parsedGames);
     
-    localStorage.setItem(key, stringyNewProducts);
+    localStorage.setItem('GAMES', stringyNewProducts);
 
     // It takes a product object as a parameter and puts the product into the correct place in localStorage.
     // Your test should add a product, then retrieve all the products and assert deep Equal the last item
