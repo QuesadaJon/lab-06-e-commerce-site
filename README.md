@@ -1,4 +1,4 @@
-# Lab 06: Products
+<!-- # Lab 06: Products
 
 Today we will be starting a new project, with basic elements of
 an e-commerce site including a product page and shopping cart. Decide your product domain and follow repository setup guide, giving your repository a relevant name related to the product.
@@ -205,7 +205,7 @@ Property | Description
 
 The goal for today is to generate a table with the quantity, product name, and line item total, plus an overall order total for all products in the cart.
 
-<!-- ### Step 1: Design Cart
+### Step 1: Design Cart
 
 Work out the static design for the cart table. It should show the quantity, product name and line item total on each row. The footer should have the order total.
 
@@ -337,7 +337,7 @@ This event handler will need to handle the following tasks:
 ### Step 2: Get Shopping Cart from localStorage on Shopping Cart Page
 
 Instead importing a hard-coded cart data, retrieve the shopping cart from localStorage (don't forget to `JSON.parse`!) and use it in rendering the table.
- -->
+
 ### Step 3: Place Order 
 
 1. If there are no line items in the cart, disable the "Place Order" button.
@@ -369,4 +369,87 @@ Add product to cart (addEventListener in render product) | 4
 Load cart on shopping cart page | 3
 Place order with alert, remove cart, and redirect | 2
 Add Quantity to product page | +1
-TDD `getCart`, `clearCart`, and `setCart` functions for `cart-api.js` | +1
+TDD `getCart`, `clearCart`, and `setCart` functions for `cart-api.js` | +1 -->
+
+# Lab 09: Product Entry
+
+## Goal
+
+Add a new page that allows entry of a new product.
+
+---
+
+## Learning Objectives
+- Use localStorage instead of hard-coded JSON to store and access your product data (but still initialize localStorage from hard coded JSON)
+- Write impure functions to manage the complexity of getting and setting data in localStorage
+- Use `new FormData(formElement)` in a submit handler to easily manage multiple input fields as once.
+- Use `event.target` and `event.preventDefault` in an event handler callback
+
+---
+
+## New Branch
+
+Make sure to work on a new branch!
+
+## Feature
+
+This lab is an exercise in following similar patterns from prior days labs. Plus the addition of
+using an HTML Form.
+
+### Step 1: Design Product Entry Page
+
+This `product-entry.html` page should have a form with all the necessary data for adding a product.
+
+Because this is not a list of data, you can place the form statically on the page and give the form
+an id.
+
+Also, add links to all pages (and on all pages) in the header so it's easy to navigate your site.
+
+### Step 2: TDD API Method for Add Product
+
+Add a new, tested function `addProduct` as a util function. It takes a product object as a parameter and puts the product into the correct place in localStorage.
+Your test should add a product, then retrieve all the products and assert deep Equal the last item
+in the array and the supplied new product.
+
+Your function will need to:
+
+1. Retrieve the existing products array
+1. Push the new product into the array
+1. Re-save the products array into localStorage
+
+Your test will:
+1. Add the product using your function
+1. Examine the PRODUCT notch in localStorage. Use deepEqual to check that the product is now in localStorage.
+
+### Step 3: Form Submit Event
+
+In your `product-entry.js`:
+
+1. Get a reference to the form
+1. Subscribe to the `submit` event
+1. Don't forget to call `event.preventDefault()`!
+1. Create a `new FormData` object passing in the form
+1. Make a new product object from the formData (i.e. `form.get`)
+1. Call your new store `addProduct` function with the object.
+1. Reset the form
+
+### STRETCH Step 4: Remove a Product
+
+1. On the product entry page, also render a list of products with a remove button by each one.
+1. Add a function `removeProduct` that takes a product code. In that method, find the product and remove from the product array.
+1. Use this funtion to remove an item on an appropriate click;
+
+BONUS: When adding a product, also renderer a new list items add it to the list of products.
+
+---
+
+## Points Break Down
+
+Looking For | Points (+12)
+:--|--:
+Hoested on Github Pages and overall functionality is correct -- smooth user experience (links in header) |  2
+TDD Add Product function | 2
+Wire-up form submit with prevent default | 2
+Use `new FormData` to create new product object | 2
+New item shows up on product page, and and shows up in cart when added to cart | 2
+Remove Product | +1
