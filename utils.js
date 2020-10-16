@@ -74,9 +74,7 @@ export function findById(array, id) {
 }
 
 export function calcLineItem(quantity, ammount) {
-    const lineOne = quantity;
-    const lineTwo = ammount;
-    const result = lineOne * lineTwo;
+    const result = quantity * ammount;
     return Math.round(result * 100) / 100;
     
 }
@@ -107,7 +105,7 @@ export function setInLocalStorage(key, value) {
 
     return value;
 }
-export function getLocalStorageGames(key, value) {
+export function getLocalStorageGames(key) {
 
     // go get localStorageBooks from local storage and call them localStorageBooks
     let localStorageBooks = JSON.parse(localStorage.getItem(key));
@@ -116,23 +114,27 @@ export function getLocalStorageGames(key, value) {
     // if they've never been to the site
     if (!localStorageBooks) {
         // go grab the hard coded localStorageBooks, and SEED local storage with them
-        const stringyBooks = JSON.stringify(value);
+        const stringyBooks = JSON.stringify(boardGames);
 
         localStorage.setItem(key, stringyBooks);
-        localStorageBooks = value;
+        localStorageBooks = boardGames;
     }
 
     return localStorageBooks;
 }
 
-export function addProduct(key, value) {
+export function addProduct(newProduct, key) {
 
-    const localStorageBooks = getLocalStorageGames(key, value);
+    const games = localStorage.getItem(key);
 
-    localStorageBooks.push(value);
+    const parsedGames = JSON.parse(games);
 
-    const stringyLocalBooks = JSON.stringify(localStorageBooks);
-    localStorage.setItem(key, stringyLocalBooks);
+    
+    parsedGames.push(newProduct);
+
+    const stringyNewProducts = JSON.stringify(parsedGames);
+    
+    localStorage.setItem(key, stringyNewProducts);
 
     // It takes a product object as a parameter and puts the product into the correct place in localStorage.
     // Your test should add a product, then retrieve all the products and assert deep Equal the last item
