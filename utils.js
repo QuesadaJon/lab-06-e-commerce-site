@@ -1,5 +1,5 @@
 import { boardGames as hardCodedGames } from '../data.js';
-import { PRODUCT, CART} from './constants.js';
+import { PRODUCT, CART } from './constants.js';
 
 
 export function render(boardGames) {
@@ -126,15 +126,12 @@ export function getLocalStorageGames(key) {
 
 export function addProduct(newProduct) {
 
-    const games = localStorage.getItem('GAMES');
+    const localStorageBooks = getLocalStorageGames();
 
-    const parsedGames = JSON.parse(games);
-    
-    parsedGames.push(newProduct);
+    localStorageBooks.push(newProduct);
 
-    const stringyNewProducts = JSON.stringify(parsedGames);
-    
-    localStorage.setItem('GAMES', stringyNewProducts);
+    const stringyLocalBooks = JSON.stringify(localStorageBooks);
+    localStorage.setItem(PRODUCT, stringyLocalBooks);
 
     // It takes a product object as a parameter and puts the product into the correct place in localStorage.
     // Your test should add a product, then retrieve all the products and assert deep Equal the last item

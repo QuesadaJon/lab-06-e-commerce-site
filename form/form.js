@@ -17,4 +17,4 @@ newProductForm.addEventListener('submit', (event) =>{
 
     addProduct(product);
 
-})
+});
